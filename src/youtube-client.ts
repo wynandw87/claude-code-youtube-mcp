@@ -34,7 +34,7 @@ export class YouTubeClient {
       if (body.includes('quotaExceeded')) {
         return new Error('YouTube API quota exceeded. Try again tomorrow or use a different API key.');
       }
-      return new Error('Invalid YouTube API key. Please check your YOUTUBE_API_KEY environment variable.');
+      return new Error(`YouTube API auth error (${status}): ${body}`);
     }
     if (status === 404) {
       return new Error('Resource not found on YouTube.');
